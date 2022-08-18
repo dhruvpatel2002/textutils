@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
@@ -7,7 +6,6 @@ import About from './components/About';
 import React, {useState} from 'react'
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Routes
 } from "react-router-dom";
@@ -34,19 +32,11 @@ const toggleMode = ()=>{
     setMode('dark');
     document.body.style.backgroundColor = '#091b26';
     showAlert("Dark mode enabled", "success");
-    document.title = 'TextUtils - Dark Mode';
-    // setInterval(() => {
-    //   document.title = 'Text-Utils is Amazing'
-    // }, 2000);
-    // setInterval(() => {
-    //   document.title = 'Install TextUtils Now'
-    // }, 1500);
   }
   else{
     setMode('light');
     document.body.style.backgroundColor = 'white';
     showAlert("Light mode enabled", "success");
-    document.title = 'TextUtils - Light Mode'
   }
 }
 
@@ -55,10 +45,10 @@ const toggleMode = ()=>{
     <Router>
     <Navbar title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode}/>
     <Alert alert={alert}/>
-    <div className="container my-3 ">
+    <div className='container my-3'>
         <Routes>
-          <Route exact path="/about" element={<About/>}/>
-          <Route exact path="/" element={<TextForm heading= "Enter the text to analyze below" mode={mode} showAlert={showAlert}/>}/>
+          <Route exact path='/about' element={<About mode={mode}/>}/>
+          <Route exacy path='/' element={<TextForm heading= "Try TextUtils - Word Counter, Character Counter, Remove extra spaces" mode={mode} showAlert={showAlert}/>}/>
         </Routes>
     </div>
     </Router>
